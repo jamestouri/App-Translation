@@ -13,6 +13,7 @@
 		0F75E36020BA004600062B69 /* Refugees_R_Us.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F75E35E20BA004600062B69 /* Refugees_R_Us.xcdatamodeld */; };
 		0F75E36220BA004700062B69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F75E36120BA004700062B69 /* Assets.xcassets */; };
 		0F75E36520BA004700062B69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F75E36320BA004700062B69 /* LaunchScreen.storyboard */; };
+		0FBC4DD920BA1165000EB94C /* TranslatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBC4DD820BA1165000EB94C /* TranslatorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		0F75E36120BA004700062B69 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F75E36420BA004700062B69 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F75E36620BA004700062B69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0FBC4DD820BA1165000EB94C /* TranslatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				0F75E35720BA004600062B69 /* AppDelegate.swift */,
 				0F75E35920BA004600062B69 /* ViewController.swift */,
 				0F75E35B20BA004600062B69 /* Main.storyboard */,
+				0FBC4DD820BA1165000EB94C /* TranslatorViewController.swift */,
 				0F75E36120BA004700062B69 /* Assets.xcassets */,
 				0F75E36320BA004700062B69 /* LaunchScreen.storyboard */,
 				0F75E36620BA004700062B69 /* Info.plist */,
@@ -140,6 +143,7 @@
 			files = (
 				0F75E35A20BA004600062B69 /* ViewController.swift in Sources */,
 				0F75E36020BA004600062B69 /* Refugees_R_Us.xcdatamodeld in Sources */,
+				0FBC4DD920BA1165000EB94C /* TranslatorViewController.swift in Sources */,
 				0F75E35820BA004600062B69 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
