@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     // Language that will be associated with the Google Translate API
     var language_chosen: String?
     
+    
  
     override func viewDidLoad() {
         super.viewDidLoad()

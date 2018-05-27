@@ -1,0 +1,6 @@
+framework module Pods_Refugees_R_Us {
+  umbrella header "Pods-Refugees R Us-umbrella.h"
+
+  export *
+  module * { export * }
+}
