@@ -15,27 +15,24 @@ class TranslateRequests {
     
 
     
-    func makingRequests(spoken_text: String?) -> String? {
+    func makingRequests(spoken_text: String?, toTranslate: String?) -> String? {
         
-        var result: String?
+        var result =  [String: String]()
         
         let parameters = [
             "q": spoken_text,
-            "source": "",
-            "target": "",
+            "target": toTranslate,
             "format": "text"
-            ] as [String : Any]
+            ] as! [String : String]
         
         Alamofire.request("https://translation.googleapis.com/language/translate/v2?key=\(apiKey)", method: .post, parameters: parameters)
-            .responseJSON { response in
-                print(response.request)
-                print(response.response)
-                print(response.data)
-                print(response.result)
-                
-                result = response.result.value as! String
+            .responseJSON { (response) -> Void in
+              
+                if let json = response.result.value {
+                    result = json as! [String : String]
+                }
         }
-        return result ?? "Error"
+        return result["translations"] as! String
     }
     
 }

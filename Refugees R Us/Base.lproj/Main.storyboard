@@ -21,12 +21,24 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4YK-vJ-cRR">
                                 <rect key="frame" x="0.0" y="100" width="375" height="466"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syI-GR-MuZ">
+                                <rect key="frame" x="155" y="574" width="64" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="55"/>
+                                <state key="normal" title="✓"/>
+                                <connections>
+                                    <action selector="doneButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="czB-p0-vUL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4YK-vJ-cRR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="3BB-Oc-M6d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="syI-GR-MuZ" secondAttribute="bottom" constant="49" id="AWU-9Y-7tG"/>
+                            <constraint firstItem="syI-GR-MuZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="155" id="Fi8-an-0XJ"/>
                             <constraint firstItem="4YK-vJ-cRR" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fq3-1e-MGs"/>
                             <constraint firstAttribute="trailing" secondItem="4YK-vJ-cRR" secondAttribute="trailing" id="luB-5r-S4A"/>
+                            <constraint firstItem="syI-GR-MuZ" firstAttribute="top" secondItem="4YK-vJ-cRR" secondAttribute="bottom" constant="8" symbolic="YES" id="ntP-ZD-ek6"/>
+                            <constraint firstItem="syI-GR-MuZ" firstAttribute="centerX" secondItem="4YK-vJ-cRR" secondAttribute="centerX" id="p9L-29-gYR"/>
                             <constraint firstItem="4YK-vJ-cRR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yM6-ne-d4A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
