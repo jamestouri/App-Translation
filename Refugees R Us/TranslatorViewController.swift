@@ -14,7 +14,7 @@ class TranslatorViewController: UIViewController {
     @IBOutlet weak var translateToLabel: UILabel!
     
     // The translated Language
-    var languageToTranslate: String?
+    var languageToTranslate: String!
     
     // Translated 2-char String
     var translatedIdentifier: String?
@@ -57,10 +57,18 @@ extension TranslatorViewController: UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
      
         let translate = TranslateRequests()
+        // If the language that wants to be translated to is equivalent return the same text
+        if languageIdentifier == translateChoice[Array(translateChoice.keys)[row]] {
+            
+            return Array(translateChoice.keys)[row]
+       
+        } else {
+            // Call the Google Translate API
+            var translated = translate.makingRequests(spoken_text: Array(translateChoice.keys)[row], toTranslate: languageIdentifier, source: translateChoice[Array(translateChoice.keys)[row]])
+            
+                return Array(translateChoice.keys)[row]
         
-        var translated = translate.makingRequests(spoken_text: Array(translateChoice.keys)[row], toTranslate: ViewController().languageIdentifier, source: translateChoice[Array(translateChoice.keys)[row]])
-        
-        return Array(translateChoice.keys)[row]
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+var languageIdentifier: String?
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

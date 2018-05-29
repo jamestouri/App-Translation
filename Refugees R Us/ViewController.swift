@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     var language_chosen: String?
     
     // Identified 2-Char String for Google Translate API
-    var languageIdentifier: String?
+    
     
     
     // Languages to choose from
@@ -79,7 +79,6 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         language_chosen = Array(languageChoices.keys)[row]
         languageIdentifier = languageChoices[language_chosen!]
-        print(languageIdentifier as! String)
         
     }
 }
