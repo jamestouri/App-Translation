@@ -55,11 +55,11 @@ extension TranslatorViewController: UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        DispatchQueue.global().async {
-            let translate = TranslateRequests()
-            
-            var translated = translate.makingRequests(spoken_text: Array(self.translateChoice.keys)[row], toTranslate: ViewController().languageIdentifier)
-        }
+     
+        let translate = TranslateRequests()
+        
+        var translated = translate.makingRequests(spoken_text: Array(translateChoice.keys)[row], toTranslate: ViewController().languageIdentifier, source: translateChoice[Array(translateChoice.keys)[row]])
+        
         return Array(translateChoice.keys)[row]
     }
     

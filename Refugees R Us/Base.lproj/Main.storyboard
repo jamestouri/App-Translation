@@ -27,6 +27,7 @@
                                 <state key="normal" title="✓"/>
                                 <connections>
                                     <action selector="doneButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="czB-p0-vUL"/>
+                                    <segue destination="x7K-FN-rIu" kind="show" id="Y3D-Et-lP1"/>
                                 </connections>
                             </button>
                         </subviews>
