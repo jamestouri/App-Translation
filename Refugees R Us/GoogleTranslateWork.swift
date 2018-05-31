@@ -17,9 +17,9 @@ class TranslateRequests {
 //    var result: String?
 
     
-    func makingRequests(spoken_text: String?, toTranslate: String?, source: String?, completionHandler: @escaping (String?) -> ()) {
+    func makingRequests(spoken_text: String?, toTranslate: String?, source: String?, completionHandler: @escaping (String?) -> ()){
         
-
+        
         let parameters = [
             "q": spoken_text!,
             "target": toTranslate!,
@@ -35,8 +35,7 @@ class TranslateRequests {
                         if let translations = data["translations"] as? [NSDictionary]  {
                             if let translated = translations.first as? [String: Any] {
 //
-//                                (translated["translatedText"] as! String)
-//                                print(self.result)
+//
                                 completionHandler(translated["translatedText"] as? String)
                                 
                                 
@@ -45,7 +44,6 @@ class TranslateRequests {
                     }
                 }
             }
-//        return result
     }
     
 }

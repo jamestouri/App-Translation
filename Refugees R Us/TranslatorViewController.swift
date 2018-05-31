@@ -16,21 +16,48 @@ class TranslatorViewController: UIViewController {
     // The translated Language
     var languageToTranslate: String!
     
-    // Translated 2-char String
-    var translatedIdentifier: String?
     
     // getting list of the language choices and translating them to the proper text
     var translateChoice = ViewController().languageChoices
+    
+    // Appending to the new list
+    var dictList: Array = [AnyObject]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         translatePicker.delegate = self
+        translatePicker.dataSource = self
         
         
-
+        let translate = TranslateRequests()
+        // If the language that wants to be translated to is equivalent return the same text
+        for i in (0 ..< translateChoice.count) {
+            if languageIdentifier == translateChoice[Array(translateChoice.keys)[i]] {
+                
+               continue
+                
+            } else {
+                
+                // Call the Google Translate API
+                translate.makingRequests(spoken_text: Array(self.translateChoice.keys)[i], toTranslate: languageIdentifier, source: translateChoice[Array(translateChoice.keys)[i]]) { ( completionHandler: String?) in
+                    
+                    DispatchQueue.main.async {
+                        self.dictList.append(completionHandler as AnyObject)
+                        self.translatePicker.reloadAllComponents()
+                    }
+                }
+            }
+        }
+       
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,26 +80,11 @@ extension TranslatorViewController: UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return translateChoice.count
+        return dictList.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        var translated: String?
-        let translate = TranslateRequests()
-        // If the language that wants to be translated to is equivalent return the same text
-        if languageIdentifier == translateChoice[Array(translateChoice.keys)[row]] {
-            
-            return Array(translateChoice.keys)[row]
-       
-        } else {
-            // Call the Google Translate API
-            translate.makingRequests(spoken_text: Array(translateChoice.keys)[row], toTranslate: languageIdentifier, source: translateChoice[Array(translateChoice.keys)[row]]) { (completionHandler: String?) in
-                    self.TranslatorViewController.reloadAllComponent()
-                    translated = completionHandler
-                
-                }
-        }
-        return translated
+        return dictList[row] as! String
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

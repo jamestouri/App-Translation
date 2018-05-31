@@ -8,7 +8,12 @@
 
 import UIKit
 import CoreData
+
+// Language 2-char String for Google Translate API
 var languageIdentifier: String?
+
+// Translated 2-char String
+var translatedIdentifier: String?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
