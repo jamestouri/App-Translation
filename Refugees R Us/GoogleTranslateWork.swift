@@ -16,7 +16,7 @@ class TranslateRequests {
     private var API_KEY = "AIzaSyDciQUmZujriTIx_DaSeE-5WYu6kCCc9XA"
 //    var result: String?
 
-    
+    // Translating a string
     func makingRequests(spoken_text: String?, toTranslate: String?, source: String?, completionHandler: @escaping (String?) -> ()){
         
         
@@ -45,6 +45,25 @@ class TranslateRequests {
                 }
             }
     }
+    
+    
+    func detectLanguage(spoken_text: String?, completionHandler: @escaping (String?) -> ()) {
+        
+        let parameters = [
+            "q": spoken_text!
+            ]
+        Alamofire.request("https://translation.googleapis.com/language/translate/v2/detect?key=\(API_KEY)", method: .post, parameters: parameters)
+            .responseJSON { (response) in
+                if let json = response.result.value as? [String: Any]  {
+                    
+                     completionHandler(json as? String)
+                    
+            }
+        }
+    }
+    
+    
+    
     
 }
 

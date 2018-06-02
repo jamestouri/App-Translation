@@ -32,6 +32,7 @@ class TranslatorViewController: UIViewController {
         translatePicker.delegate = self
         translatePicker.dataSource = self
         
+        // Translate the text label according to the language chosen
         translate.makingRequests(spoken_text: "Select Language to Translate", toTranslate: languageIdentifier, source: "en") { ( completionHandler: String?) in
             
             DispatchQueue.main.async {
@@ -65,11 +66,6 @@ class TranslatorViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
