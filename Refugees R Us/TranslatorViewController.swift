@@ -22,17 +22,25 @@ class TranslatorViewController: UIViewController {
     
     // Appending to the new list
     var dictList: Array = [AnyObject]()
+    var identifierList: Array = [AnyObject]()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         let translate = TranslateRequests()
         
         translatePicker.delegate = self
         translatePicker.dataSource = self
         
+        translate.makingRequests(spoken_text: "Select Language to Translate", toTranslate: languageIdentifier, source: "en") { ( completionHandler: String?) in
+            
+            DispatchQueue.main.async {
+                self.translateToLabel.text = completionHandler
+                self.translateToLabel.reloadInputViews()
+            }
+        }
         
-        let translate = TranslateRequests()
+       
         // If the language that wants to be translated to is equivalent return the same text
         for i in (0 ..< translateChoice.count) {
             if languageIdentifier == translateChoice[Array(translateChoice.keys)[i]] {
@@ -40,13 +48,15 @@ class TranslatorViewController: UIViewController {
                continue
                 
             } else {
-                
                 // Call the Google Translate API
                 translate.makingRequests(spoken_text: Array(self.translateChoice.keys)[i], toTranslate: languageIdentifier, source: translateChoice[Array(translateChoice.keys)[i]]) { ( completionHandler: String?) in
                     
                     DispatchQueue.main.async {
                         self.dictList.append(completionHandler as AnyObject)
                         self.translatePicker.reloadAllComponents()
+                        self.identifierList.append(self.translateChoice[Array(self.translateChoice.keys)[i]] as AnyObject)
+
+                        
                     }
                 }
             }
@@ -84,11 +94,10 @@ extension TranslatorViewController: UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return dictList[row] as! String
+        return dictList[row] as? String
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-        
+        translatedIdentifier = identifierList[row] as? String
     }
 }
