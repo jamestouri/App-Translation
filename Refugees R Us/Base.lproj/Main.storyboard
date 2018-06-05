@@ -128,8 +128,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaR-bW-Yth">
-                                <rect key="frame" x="138" y="451" width="99" height="63"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="38" y="450" width="299" height="63"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="55"/>
+                                <state key="normal" title="✓"/>
                                 <connections>
                                     <action selector="micButton:" destination="NzA-fl-UOC" eventType="touchUpInside" id="Ckz-q3-sX1"/>
                                 </connections>
@@ -137,17 +138,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="H8f-0W-qkU" firstAttribute="bottom" secondItem="XaR-bW-Yth" secondAttribute="bottom" constant="153" id="3rx-pT-PLw"/>
-                            <constraint firstItem="XaR-bW-Yth" firstAttribute="leading" secondItem="H8f-0W-qkU" secondAttribute="leading" constant="138" id="3s0-pk-nSt"/>
-                            <constraint firstItem="XaR-bW-Yth" firstAttribute="centerX" secondItem="kFu-pr-GDI" secondAttribute="centerX" id="75Z-Kr-wJL"/>
+                            <constraint firstItem="H8f-0W-qkU" firstAttribute="bottom" secondItem="XaR-bW-Yth" secondAttribute="bottom" constant="154" id="2sk-0C-iDB"/>
+                            <constraint firstItem="XaR-bW-Yth" firstAttribute="centerX" secondItem="kFu-pr-GDI" secondAttribute="centerX" id="Aud-RL-i4M"/>
                             <constraint firstItem="kFu-pr-GDI" firstAttribute="trailing" secondItem="iPN-Wx-6s4" secondAttribute="trailingMargin" id="SbC-S1-fq4"/>
-                            <constraint firstItem="XaR-bW-Yth" firstAttribute="top" secondItem="kFu-pr-GDI" secondAttribute="bottom" constant="22" id="gXT-2b-Jce"/>
+                            <constraint firstItem="XaR-bW-Yth" firstAttribute="top" secondItem="kFu-pr-GDI" secondAttribute="bottom" constant="21" id="UXN-p2-UHf"/>
                             <constraint firstItem="kFu-pr-GDI" firstAttribute="leading" secondItem="iPN-Wx-6s4" secondAttribute="leadingMargin" id="i7p-if-TMA"/>
+                            <constraint firstItem="XaR-bW-Yth" firstAttribute="leading" secondItem="H8f-0W-qkU" secondAttribute="leading" constant="38" id="qu9-lV-0f1"/>
                             <constraint firstItem="kFu-pr-GDI" firstAttribute="top" secondItem="H8f-0W-qkU" secondAttribute="top" constant="19" id="veq-Gn-Zqj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="H8f-0W-qkU"/>
                     </view>
                     <connections>
+                        <outlet property="recordButton" destination="XaR-bW-Yth" id="iJV-3o-t4x"/>
                         <outlet property="textToCommunicate" destination="kFu-pr-GDI" id="x6O-ZF-XEx"/>
                     </connections>
                 </viewController>

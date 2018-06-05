@@ -18,17 +18,17 @@ class ViewController: UIViewController {
     
     
     // Languages to choose from
-    let languageChoices = ["عربى": "ar",
-                           "Nederlands": "nl",
-                           "English": "en",
-                           "Magyar": "hu",
-                           "Deutsche": "ge",
-                           "Ελληνικά": "el",
-                           "Italiano": "it",
-                           "Lietuviškai": "lt",
-                           "Tagalog": "tl",
-                           "Türk": "tr",
-                           "Українська": "uk"
+    let languageChoices = ["عربى": "ar-JO",
+                           "Nederlands": "nl-NL",
+                           "English": "en-US",
+                           "Magyar": "hu-HU",
+                           "Deutsche": "ge-DE",
+                           "Ελληνικά": "el-GR",
+                           "Italiano": "it-IT",
+                           "Lietuviškai": "lt-LT",
+                           "Português": "pt-PT",
+                           "Türk": "tr-TR",
+                           "Українська": "uk-UA"
                            ]
  
     override func viewDidLoad() {
@@ -79,6 +79,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         language_chosen = Array(languageChoices.keys)[row]
         languageIdentifier = languageChoices[language_chosen!]
+        
         
     }
 }

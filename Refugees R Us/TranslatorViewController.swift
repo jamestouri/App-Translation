@@ -27,21 +27,27 @@ class TranslatorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         let translate = TranslateRequests()
+        let translate = TranslateRequests()
         
         translatePicker.delegate = self
         translatePicker.dataSource = self
         
-        // Translate the text label according to the language chosen
-        translate.makingRequests(spoken_text: "Select Language to Translate", toTranslate: languageIdentifier, source: "en") { ( completionHandler: String?) in
-            
-            DispatchQueue.main.async {
-                self.translateToLabel.text = completionHandler
-                self.translateToLabel.reloadInputViews()
+        if languageIdentifier == "en-US" {
+            self.translateToLabel.text = "Select Language to Translate"
+
+        } else {
+
+            // Translate the text label according to the language chosen
+            translate.makingRequests(spoken_text: "Select Language to Translate", toTranslate: (languageIdentifier?.prefix(2) as! String), source: "en") { ( completionHandler: String?) in
+                
+                DispatchQueue.main.async {
+                    self.translateToLabel.text = completionHandler
+                    self.translateToLabel.reloadInputViews()
+                }
             }
-        }
         
-       
+        }
+    
         // If the language that wants to be translated to is equivalent return the same text
         for i in (0 ..< translateChoice.count) {
             if languageIdentifier == translateChoice[Array(translateChoice.keys)[i]] {
@@ -50,7 +56,7 @@ class TranslatorViewController: UIViewController {
                 
             } else {
                 // Call the Google Translate API
-                translate.makingRequests(spoken_text: Array(self.translateChoice.keys)[i], toTranslate: languageIdentifier, source: translateChoice[Array(translateChoice.keys)[i]]) { ( completionHandler: String?) in
+                translate.makingRequests(spoken_text: Array(self.translateChoice.keys)[i], toTranslate: languageIdentifier?.prefix(2) as! String, source: translateChoice[Array(translateChoice.keys)[i]]?.prefix(2) as! String) { ( completionHandler: String?) in
                     
                     DispatchQueue.main.async {
                         self.dictList.append(completionHandler as AnyObject)
