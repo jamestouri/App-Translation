@@ -27,6 +27,11 @@ class TranslatorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(languageToTranslate)
+        print(languageIdentifier)
+
+        
+        
         let translate = TranslateRequests()
         
         translatePicker.delegate = self
@@ -38,7 +43,7 @@ class TranslatorViewController: UIViewController {
         } else {
 
             // Translate the text label according to the language chosen
-            translate.makingRequests(spoken_text: "Select Language to Translate", toTranslate: (languageIdentifier?.prefix(2) as! String), source: "en") { ( completionHandler: String?) in
+            translate.makingRequests(spoken_text: "Select Language to Translate", toTranslate: (languageIdentifier!.prefix(2)), source: "en-US".prefix(2)) { ( completionHandler: String?) in
                 
                 DispatchQueue.main.async {
                     self.translateToLabel.text = completionHandler
@@ -56,7 +61,7 @@ class TranslatorViewController: UIViewController {
                 
             } else {
                 // Call the Google Translate API
-                translate.makingRequests(spoken_text: Array(self.translateChoice.keys)[i], toTranslate: languageIdentifier?.prefix(2) as! String, source: translateChoice[Array(translateChoice.keys)[i]]?.prefix(2) as! String) { ( completionHandler: String?) in
+                translate.makingRequests(spoken_text: Array(self.translateChoice.keys)[i], toTranslate: languageIdentifier!.prefix(2), source: translateChoice[Array(translateChoice.keys)[i]]!.prefix(2)) { ( completionHandler: String?) in
                     
                     DispatchQueue.main.async {
                         self.dictList.append(completionHandler as AnyObject)

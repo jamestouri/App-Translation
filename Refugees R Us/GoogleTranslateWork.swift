@@ -17,15 +17,14 @@ class TranslateRequests {
 //    var result: String?
 
     // Translating a string
-    func makingRequests(spoken_text: String?, toTranslate: String?, source: String?, completionHandler: @escaping (String?) -> ()){
+    func makingRequests(spoken_text: String?, toTranslate: String.SubSequence?, source: String.SubSequence?, completionHandler: @escaping (String?) -> ()){
         
         
         let parameters = [
             "q": spoken_text!,
             "target": toTranslate!,
             "source": source!
-            ]
-        
+            ] as [String : Any]
         
         Alamofire.request("https://translation.googleapis.com/language/translate/v2?key=\(API_KEY)", method: .post, parameters: parameters)
             .responseJSON { (response) in
