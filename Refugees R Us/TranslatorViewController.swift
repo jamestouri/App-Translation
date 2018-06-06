@@ -27,10 +27,6 @@ class TranslatorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(languageToTranslate)
-        print(languageIdentifier)
-
-        
         
         let translate = TranslateRequests()
         

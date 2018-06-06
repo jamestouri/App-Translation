@@ -22,9 +22,14 @@ class CommunicationViewController: UIViewController, AVAudioRecorderDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Setting up session
         
+        // Setting up session
         recordingSession = AVAudioSession.sharedInstance()
+        
+        if let number: Int = UserDefaults.standard.object(forKey: "myNumber") as? Int {
+            numberOfRecords = number
+        }
+        
         AVAudioSession.sharedInstance().requestRecordPermission { (hasPermission) in
             if hasPermission {
                 print("Accepted")
@@ -51,9 +56,9 @@ class CommunicationViewController: UIViewController, AVAudioRecorderDelegate {
             let fileName = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
             
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-                            AVSampleRateKey: 12000,
+                            AVSampleRateKey: 16000,
                             AVNumberOfChannelsKey: 1,
-            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
+                            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
             // Initialize the Audio recorder
             
@@ -71,10 +76,31 @@ class CommunicationViewController: UIViewController, AVAudioRecorderDelegate {
             }
         }
         else {
+            // Stopping Audio recorder
             audioRecorder.stop()
             audioRecorder = nil
             
             recordButton.setTitle("✓", for: .normal)
+            
+            UserDefaults.standard.set(numberOfRecords, forKey: "myNumber")
+            // Getting the Audio
+            let path = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
+            do {
+                let audioPlayer = try AVAudioPlayer(contentsOf: path)
+                audioPlayer.play()
+            }
+            catch {
+                print("Not Working")
+            }
+            let translate = TranslateRequests()
+            // Speech to text api
+            translate.speechToText(encoding: path, languageCode: languageIdentifier) { (completionHandler: String?) in
+                DispatchQueue.main.async {
+                    print(completionHandler)
+                }
+            }
+           // Text translating api
+            
         }
         
         
